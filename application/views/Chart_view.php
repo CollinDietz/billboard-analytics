@@ -1,3 +1,5 @@
+<?php $this->load->helper('html'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,23 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
-  <style type='text/css'>
-    .skinny_table {
-      width: 75%;
-    }
-
-    .centered {
-      margin: auto;
-    }
-
-    .body {
-      background-color: black;
-    }
-
-    .green {
-      color : #84bd00;
-    }
-  </style>
+  <?php echo link_tag('assets/css/main.css'); ?>
 </head>
 
 <body class="body">

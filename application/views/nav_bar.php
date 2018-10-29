@@ -9,9 +9,9 @@
 </style>
 
 <nav class="nav-bar navbar-expand-lg navbar-light">
-      <button class="nav-link" href='<?php echo base_url('admin/artists')?>' role="button">Artists</button>
-      <a class="btn btn-primary" href='<?php echo base_url('admin/albums')?>' role="button">Albums</a>
-      <a class="btn btn-primary" href='<?php echo base_url('admin/songs')?>' role="button">Songs</a>
-      <a class="btn btn-primary" href='<?php echo base_url('admin/charts')?>' role="button">Charts</a>
-      <a class="btn btn-primary" href='<?php echo base_url('admin/charted')?>' role="button">Charting</a>
+      <button class="nav-link" href='<?php echo site_url('admin/artists')?>' role="button">Artists</button>
+      <a class="btn btn-primary" href='<?php echo site_url('admin/albums')?>' role="button">Albums</a>
+      <a class="btn btn-primary" href='<?php echo site_url('admin/songs')?>' role="button">Songs</a>
+      <a class="btn btn-primary" href='<?php echo site_url('admin/charts')?>' role="button">Charts</a>
+      <a class="btn btn-primary" href='<?php echo site_url('admin/charted')?>' role="button">Charting</a>
 </nav>

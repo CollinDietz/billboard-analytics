@@ -52,14 +52,14 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
 
 public function index()
 {
-  redirect(base_url("chart/view/billboard-200/2018-10-27"));
+  redirect(site_url("chart/view/billboard-200/2018-10-27"));
 }
 
 public function chart_pick()
 {
   $chart_name = $_POST['chart'];
   $date = date("Y-m-d", strtotime($_POST['date']));
-  redirect(base_url("chart/view/$chart_name/$date"));
+  redirect(site_url("chart/view/$chart_name/$date"));
 }
 }
 
