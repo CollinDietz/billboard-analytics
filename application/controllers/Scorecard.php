@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ScoreCard extends CI_Controller {
+class Scorecard extends CI_Controller {
 
 function __construct()
 {
@@ -22,7 +22,7 @@ function Artist($parameter1 = null)
 
   $artist_name = $parameter1;
 
-  $this->load->view("ScoreCard/Artist", array('artist_name' => $artist_name));
+  $this->load->view("Scorecard/Artist", array('artist_name' => $artist_name));
 }
 
 }
