@@ -1,4 +1,7 @@
-<?php $this->load->helper('html'); ?>
+<?php
+$this->load->helper('html');
+$ALBUM_IDENT = "Album Name";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,11 +66,31 @@
         <th>Artist</th>
       </tr>
     </thead>
+
+
     <tbody>
       <?php foreach ($chart as $row): array_map('htmlentities', $row); ?>
       <tr>
         <td>
-          <?php echo implode('</td><td>', $row); ?>
+          <?php echo $row["position"]?>
+        </td>
+        <td>
+          <?php
+            if($entry_type == $ALBUM_IDENT)
+            {
+              echo $row['album_name'];
+            }
+            else
+            {
+              echo $row['song_name'];
+            }
+          ?>
+        </td>
+        <td>
+          <?php
+          $name = str_replace(" ", "_", $row["artist_name"]);
+          $artist_link = site_url("/scorecard/artist/$name");?>
+          <a href= <?php echo "$artist_link>".$row["artist_name"]?> </a>
         </td>
       </tr>
       <?php endforeach; ?>

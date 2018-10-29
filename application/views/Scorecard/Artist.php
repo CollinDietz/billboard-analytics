@@ -11,6 +11,6 @@
 
 <body class="body">
   <h1 class="text-center green">
-    <?php echo $artist_name ?>
+    <?php echo str_replace("_", " ",$artist_name) ?>
   </h1>
 </body>

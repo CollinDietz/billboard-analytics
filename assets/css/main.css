@@ -13,3 +13,15 @@
 .green {
   color : #84bd00;
 }
+
+a:link {
+    color:white;
+}
+
+a:visited {
+  color:white;
+}
+
+a:hover {
+  color:#84bd00;
+}
