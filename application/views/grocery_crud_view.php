@@ -40,17 +40,7 @@ foreach($css_files as $file): ?>
 </head>
 
 <body>
-  <!-- Beginning header -->
-  <div class="btn-group-wrap">
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-primary" href='<?php echo base_url('admin/artists')?>' role="button">Artists</a>
-        <a class="btn btn-primary" href='<?php echo base_url('admin/albums')?>' role="button">Albums</a>
-        <a class="btn btn-primary" href='<?php echo base_url('admin/songs')?>' role="button">Songs</a>
-        <a class="btn btn-primary" href='<?php echo base_url('admin/charts')?>' role="button">Charts</a>
-        <a class="btn btn-primary" href='<?php echo base_url('admin/charted')?>' role="button">Charting</a>
-    </div>
-  </div>
-   <!-- End of header-->
+        <?php include_once("nav_bar.php") ?>
         <div style='height:20px;'></div>
         <div>
           <?php echo $output; ?>
