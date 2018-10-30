@@ -20,7 +20,7 @@ $ALBUM_IDENT = "Album Name";
     <?php echo $chart_name." For ".date("D M d, Y", strtotime($date)); ?>
   </h1>
 
-    <form action=<?php echo site_url("chart/chart_pick") ?> method="post">
+    <form action=<?php echo site_url("chart/chart_pick")?> method="post">
       <div class="form-inline justify-content-center">
         <select class="form-control text-capitalize" name="chart">
           <?php foreach ($charts_list as $chart_list_item){

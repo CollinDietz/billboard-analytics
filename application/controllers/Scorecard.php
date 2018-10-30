@@ -20,9 +20,18 @@ function Artist($parameter1 = null)
     show_404();
   }
 
-  $artist_name = $parameter1;
+  $artist_name = str_replace("_", " ",$parameter1);
 
-  $this->load->view("Scorecard/Artist", array('artist_name' => $artist_name));
+  $this->load->model("Scorecard_model");
+  $results = $this->Scorecard_model->GetArtistID($artist_name);
+  $artist_id = $results[0]['artist_id'];
+
+  $results = $this->Scorecard_model->GetChartEntriesStats($artist_id);
+  $this->load->view("Scorecard/Artist",
+   array(
+     'artist_name' => $artist_name,
+     'PerChartStats' => $results
+   ));
 }
 
 }
