@@ -13,6 +13,7 @@ $ALBUM_IDENT = "Album Name";
   <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
   <?php echo link_tag('assets/css/main.css'); ?>
+  <a class="btn btn-sm btn-success" href='<?php echo site_url('login')?>' role="button">Login</a>
 </head>
 
 <body class="body">

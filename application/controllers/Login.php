@@ -15,50 +15,44 @@ class Login extends CI_Controller {
 
   function index()
   {
-    $this->load->view("Login_view", array("status" => TRUE));
-  }
+    if(count($_POST) == 0)
+    {
+      $this->load->view("Login_view", array("message" => ""));
+    }
+    else
+    {
 
-  function failed()
-  {
-    $this->load->view("Login_view", array("status" => FALSE));
+      $this->load->model("Login_model");
+      $status = $this->Login_model->CheckPasswordForUserName($_POST["InputUsername"], $_POST["InputPassword"]);
+      if($status)
+      {
+        $this->load->view("login_success");
+      }
+      else
+      {
+        $this->load->view("Login_view", array("message" => "Failed"));
+      }
+    }
   }
 
   function register()
   {
-    $this->load->view("Register_view");
-  }
-
-  function register_user()
-  {
-    $local_db = $this->load->database('accounts', TRUE);
-    $local_db->query(
-      "INSERT INTO Accounts (Username, Password) VALUES (?,?)",
-     array($_POST['InputUsername'], $_POST['InputPassword']));
-     redirect(site_url('/login'));
-  }
-
-  public function login_user()
-  {
-    $local_db = $this->load->database('accounts', TRUE);
-    $results = $local_db->query("SELECT Password FROM Accounts WHERE Username=?", array($_POST['InputUsername']));
-
-    if(sizeof($results->result_array()) == 0)
+    if(count($_POST) == 0)
     {
-      redirect(site_url());
+      $this->load->view("Register_view", array("message" => ""));
     }
     else
     {
-      $password = $results->result_array()[0]["Password"];
-      if($password != $_POST['InputPassword'])
+      $this->load->model("Login_model");
+      $status =  $this->Login_model->InsertUser($_POST["InputUsername"], $_POST["InputPassword"]);
+      if($status)
       {
-        redirect(site_url("login/failed"));
+        redirect(site_url('/login'));
+      }
+      else
+      {
+        $this->load->view("Register_view", array("message" => "Failed"));
       }
     }
-    redirect(site_url("login/login_success"));
-  }
-
-  public function login_success()
-  {
-    $this->load->view("login_success");
   }
 }
