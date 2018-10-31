@@ -2,6 +2,10 @@
 $this->load->helper('html');
 ?>
 <!DOCTYPE html>
+
+<?php
+  header('Refresh:5; url= '. site_url());
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
