@@ -34,6 +34,7 @@
   <h1 class="text-center green">
     <?php echo $artist_name ?>
   </h1>
+  <?php include_once("main_nav_bar.php") ?>
   <div class="d-flex justify-content-center">
   <div class="ct-chart ">
   </div>

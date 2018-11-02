@@ -27,7 +27,7 @@ function Artist($parameter1 = null)
   $artist_id = $results[0]['artist_id'];
 
   $results = $this->Scorecard_model->GetChartEntriesStats($artist_id);
-  $this->load->view("Scorecard/Artist",
+  $this->load->view("Scorecard_Artist",
    array(
      'artist_name' => $artist_name,
      'charts' => $results["chart_names"],
