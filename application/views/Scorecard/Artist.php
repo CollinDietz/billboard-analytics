@@ -40,7 +40,7 @@
 </div>
   <script>
   var data = {
-  labels: [ "<?php echo ucwords(implode("\",\"", $charts)); ?>"],
+  labels: [ "<?php echo ucwords(implode("\", \"", array_map("ucwords", $charts))); ?>"],
   series: [[<?php echo implode(",", $counts); ?>]]
 };
 
