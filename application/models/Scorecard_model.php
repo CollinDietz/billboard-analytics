@@ -13,17 +13,12 @@ class ScoreCard_model extends CI_Model {
     $PerChartStats = 'SELECT chart_name, count(date), count(distinct date), avg(position) FROM (SELECT date, position, chart_id FROM CHARTED NATURAL JOIN SONGS WHERE artist_id = ? UNION SELECT date, position, chart_id FROM CHARTED NATURAL JOIN ALBUMS WHERE artist_id = ?)a NATURAL JOIN CHARTS GROUP BY chart_name';
     $results = $this->db->query($PerChartStats, array($artist_id,$artist_id));
     $data = $results->result_array();
-    $chart_names = [];
-    $num_dates = [];
+    $chart_entry_pairs = [];
 
     foreach ($data as $row) {
-      array_push($chart_names, $row["chart_name"]);
-      array_push($num_dates, $row["count(date)"]);
+      array_push($chart_entry_pairs, array(str_replace("-", " ", $row["chart_name"]), $row["count(date)"]));
     }
 
-    return array(
-      'chart_names' =>  $chart_names,
-      'num_dates' => $num_dates
-    );
+    return $chart_entry_pairs;
   }
 }

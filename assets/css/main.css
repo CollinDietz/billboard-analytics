@@ -30,3 +30,11 @@ a:visited {
 a:hover {
   color:#1DB954;
 }
+
+.google_chart
+{
+  width: 800px;
+  height: 500px;
+  display: block;
+  margin: 0 auto;
+}

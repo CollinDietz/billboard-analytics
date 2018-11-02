@@ -30,8 +30,7 @@ function Artist($parameter1 = null)
   $this->load->view("Scorecard_Artist",
    array(
      'artist_name' => $artist_name,
-     'charts' => $results["chart_names"],
-     'counts' => $results["num_dates"]
+     'data' => $results
    ));
 }
 
