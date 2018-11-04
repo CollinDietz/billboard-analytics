@@ -52,7 +52,7 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
 
 public function index()
 {
-  redirect(site_url("chart/view/billboard-200/2018-10-27"));
+  $this->view("billboard-200", date('Y-m-d',strtotime("next Saturday")));
 }
 
 public function chart_pick()
