@@ -23,14 +23,17 @@ function Artist($parameter1 = null)
   $artist_name = str_replace("_", " ",$parameter1);
 
   $this->load->model("Scorecard_model");
-  $results = $this->Scorecard_model->GetArtistID($artist_name);
-  $artist_id = $results[0]['artist_id'];
+  $artist_id = $this->Scorecard_model->GetArtistID($artist_name);
 
   $results = $this->Scorecard_model->GetChartEntriesStats($artist_id);
+  $AllTimeChartsStats = $this->Scorecard_model->GetAllTimeStats($artist_id);
+  $Apperances = $this->Scorecard_model->FirstAndLastApperances($artist_id);
   $this->load->view("Scorecard_Artist",
    array(
      'artist_name' => $artist_name,
-     'data' => $results
+     'data' => $results,
+     'AllTimeChartsStats' => $AllTimeChartsStats,
+     'ApperancesStats' => $Apperances,
    ));
 }
 

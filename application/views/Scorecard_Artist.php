@@ -23,44 +23,100 @@
     <div class="google_chart" id="columnchart_material"></div>
   </div>
   <script type="text/javascript">
+    google.charts.load('current', {
+      'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
 
-  google.charts.load('current', {'packages':['bar']});
-  google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Chart', ''],
+        <?php foreach($data as $dp): ?> [<?php echo "'".ucwords($dp[0])."',"; echo $dp[1].",";?>],
+        <?php endforeach; ?>
+      ]);
 
-  function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Chart',''],
-          <?php foreach($data as $dp): ?>
-          [<?php echo "'".ucwords($dp[0])."',"; echo $dp[1].",";?>],
-          <?php endforeach; ?>
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Entries Per Chart',
-            textStyle:{color: '#FFFFFF'}
-          },
-          backgroundColor : "black",
-          vAxis: {
-              gridlines: {
-                  color: 'transparent'
-              },
-              textStyle:{color: '#FFFFFF'}
-          },
-          hAxis: {
-              textStyle:{color: '#FFFFFF'}
-          },
-          colors: ['#828282'],
-          legend: {position: 'none'},
-          titleTextStyle: {
+      var options = {
+        chart: {
+          title: 'Entries Per Chart',
+          textStyle: {
             color: '#FFFFFF'
+          }
+        },
+        backgroundColor: "black",
+        vAxis: {
+          gridlines: {
+            color: 'transparent'
+          },
+          textStyle: {
+            color: '#FFFFFF'
+          }
+        },
+        hAxis: {
+          textStyle: {
+            color: '#FFFFFF'
+          }
+        },
+        colors: ['#828282'],
+        legend: {
+          position: 'none'
+        },
+        titleTextStyle: {
+          color: '#FFFFFF'
         }
-        };
+      };
 
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+      var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
   </script>
+
+
+  <br>
+  <table class="table table-dark skinny_table centered">
+    <thead>
+      <tr>
+        <th># Chart Entries</th>
+        <th># Weeks on the Charts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <?php echo $AllTimeChartsStats['NumberOfEntries']?>
+        </td>
+        <td>
+          <?php echo $AllTimeChartsStats['NumberOfWeeks']?>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <table class="table table-dark skinny_table centered">
+    <thead>
+      <tr>
+        <th> Chart </th>
+        <th>First Apperance</th>
+        <th>Most Recent Apperance</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php foreach ($ApperancesStats as $row):?>
+        <tr>
+        <td>
+          <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?>
+        </td>
+        <td>
+          <?php echo $row["FirstApperance"] ?>
+        </td>
+        <td>
+          <?php echo $row["MostRecentApperance"] ?>
+        </td>
+      </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
 
 </body>
