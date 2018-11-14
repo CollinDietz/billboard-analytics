@@ -61,8 +61,8 @@ class ScoreCard_model extends CI_Model {
     min(date) as FirstAppearance,
     max(date) as MostRecentApperance,
     count(DISTINCT date) as WeeksOnChart,
-    min(position) as MinRank,
-    max(position) as MaxRank
+    min(position) as BestRank,
+    max(position) as LowestRank
     FROM SONGS NATURAL JOIN CHARTED NATURAL JOIN CHARTS
     WHERE artist_id = ?
     GROUP BY song_name, chart_name';
@@ -78,8 +78,8 @@ class ScoreCard_model extends CI_Model {
     min(date) as FirstAppearance,
     max(date) as MostRecentApperance,
     count(DISTINCT date) as WeeksOnChart,
-    min(position) as MinRank,
-    max(position) as MaxRank
+    min(position) as BestRank,
+    max(position) as LowestRank
     FROM ALBUMS NATURAL JOIN CHARTED NATURAL JOIN CHARTS
     WHERE artist_id = ?
     GROUP BY album_name, chart_name';
