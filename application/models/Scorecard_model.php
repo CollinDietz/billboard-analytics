@@ -75,7 +75,7 @@ class ScoreCard_model extends CI_Model {
     max(date) as MostRecentApperance,
     count(DISTINCT date) as WeeksOnChart
     FROM ALBUMS NATURAL JOIN CHARTED NATURAL JOIN CHARTS
-    WHERE artist_id = 7
+    WHERE artist_id = ?
     GROUP BY album_name, chart_name';
     $results = $this->db->query($FirstAndLastApperancePerChart, array($artist_id));
     $results = $results->result_array();
