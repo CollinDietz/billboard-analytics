@@ -129,8 +129,10 @@
         <th>Album Name</th>
         <th>Chart</th>
         <th>First Apperance</th>
-        <th>Most Recent Apperance</th>
-        <th> Weeks On Chart </th>
+        <th>Most Recent</th>
+        <th>Total Weeks</th>
+        <th>Lowest Rank</th>
+        <th>Peak Rank</th>
       </tr>
     </thead>
     <tbody>
@@ -148,6 +150,8 @@
       <td> <?php echo $row["FirstAppearance"]?> </td>
       <td> <?php echo $row["MostRecentApperance"]?> </td>
       <td> <?php echo $row["WeeksOnChart"] ?> </td>
+      <td> <?php echo $row["MinRank"] ?> </td>
+      <td> <?php echo $row["MaxRank"] ?> </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
@@ -158,28 +162,34 @@
   <table class="table table-dark skinny_table centered">
     <thead>
       <tr>
-        <th>Song Name</th>
+        <th>Album Name</th>
         <th>Chart</th>
         <th>First Apperance</th>
-        <th>Most Recent Apperance</th>
+        <th>Most Recent</th>
+        <th>Total Weeks</th>
+        <th>Lowest Rank</th>
+        <th>Peak Rank</th>
       </tr>
     </thead>
     <tbody>
-    <?php
-    $currSong = "";
-    foreach ($SongApperancesStats as $row):?>
-    <tr>
-      <?php if($currSong != $row["song_name"]): ?>
+      <?php
+      $currSong = "";
+      foreach ($SongApperancesStats as $row):?>
+      <tr>
+      <td>
+        <?php if($currSong != $row["song_name"]): ?>
         <?php  $currSong = $row["song_name"]; ?>
-        <td> <?php echo $row["song_name"]?> </td>
-      <?php else:?>
-        <td></td>
-      <?php endif;?>
-      <td> <?php echo $row["chart_name"]?> </td>
-      <td> <?php echo $row["FirstAppearance"]?> </td>
-      <td> <?php echo $row["MostRecentApperance"]?> </td>
-    </tr>
-    <?php endforeach; ?>
+        <?php echo $row["song_name"];?>
+        <?php endif;?>
+      </td>
+        <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
+        <td> <?php echo $row["FirstAppearance"]?> </td>
+        <td> <?php echo $row["MostRecentApperance"]?> </td>
+        <td> <?php echo $row["WeeksOnChart"] ?> </td>
+        <td> <?php echo $row["MinRank"] ?> </td>
+        <td> <?php echo $row["MaxRank"] ?> </td>
+      </tr>
+      <?php endforeach; ?>
   </tbody>
   </table>
 

@@ -44,3 +44,9 @@ h1
   display: block;
   margin: 0 auto;
 }
+
+td,
+th{
+    white-space: nowrap;
+    width: 1%;
+}
