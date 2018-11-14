@@ -17,7 +17,7 @@ class Login extends CI_Controller {
   {
     if(count($_POST) == 0)
     {
-      $this->load->view("Login_view", array("message" => ""));
+      $this->load->view("Login_view", array("message" => "", "button_text" => "Login"));
     }
     else
     {
@@ -39,7 +39,7 @@ class Login extends CI_Controller {
   {
     if(count($_POST) == 0)
     {
-      $this->load->view("Register_view", array("message" => ""));
+      $this->load->view("Register_view", array("message" => "", "button_text" => "Register"));
     }
     else
     {
@@ -47,11 +47,11 @@ class Login extends CI_Controller {
       $status =  $this->Login_model->InsertUser($_POST["InputUsername"], $_POST["InputPassword"]);
       if($status)
       {
-        redirect(site_url('/login'));
+        $this->load->view("register_success");
       }
       else
       {
-        $this->load->view("Register_view", array("message" => "Failed"));
+        $this->load->view("Register_view", array("message" => "Failed", "button_text" => "Register"));
       }
     }
   }
