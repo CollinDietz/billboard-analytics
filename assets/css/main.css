@@ -1,4 +1,4 @@
-.skinny_table {
+.skinny {
   width: 75%;
 }
 
@@ -15,8 +15,17 @@
   background-color: black;
 }
 
+.offset_text {
+  position: relative;
+  left: 14%;
+}
+
 .green {
   color :#1DB954;
+}
+
+.grey{
+  color : #828282;
 }
 
 a:link {
@@ -37,6 +46,11 @@ h1
   color :#1DB954;
 }
 
+h3
+{
+  color :#1DB954;
+}
+
 .google_chart
 {
   width: 800px;
@@ -45,8 +59,19 @@ h1
   margin: 0 auto;
 }
 
+.btn-outline-light:hover{
+  color: #1DB954;
+  background-color: black;
+  border-color: #1DB954;
+}
+
 td,
 th{
     white-space: nowrap;
     width: 1%;
+}
+
+hr
+{
+  border-color:white;
 }

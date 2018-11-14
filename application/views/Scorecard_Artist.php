@@ -14,14 +14,16 @@
 </head>
 
 <body class="body">
-  <h1 class="text-center green">
-    <?php echo $artist_name ?>
-  </h1>
   <?php include_once("main_nav_bar.php") ?>
+  <h2 class="text-center green">
+    <?php echo $artist_name ?>
+  </h2>
+  <hr width="75%" size="8" align="center">
 
   <div class="grey">
     <div class="google_chart" id="columnchart_material"></div>
   </div>
+  <hr width="75%" size="8" align="center">
   <script type="text/javascript">
     google.charts.load('current', {
       'packages': ['bar']
@@ -72,9 +74,8 @@
   </script>
 
 
-  <br>
   <h1>All Time Stats</h1>
-  <table class="table table-dark skinny_table centered">
+  <table class="table table-dark skinny centered">
     <thead>
       <tr>
         <th># Chart Entries</th>
@@ -93,9 +94,9 @@
     </tbody>
   </table>
 
-  <br>
+  <hr width="75%" size="8" align="center">
   <h1>Per Chart Stats</h1>
-  <table class="table table-dark skinny_table centered">
+  <table class="table table-dark skinny centered">
     <thead>
       <tr>
         <th>Chart</th>
@@ -121,9 +122,9 @@
     </tbody>
   </table>
 
-  <br>
+  <hr width="75%" size="8" align="center">
   <h1>Per Album Stats</h1>
-  <table class="table table-dark skinny_table centered">
+  <table class="table table-dark skinny centered">
     <thead>
       <tr>
         <th>Album Name</th>
@@ -157,9 +158,9 @@
   </tbody>
   </table>
 
-  <br>
+  <hr width="75%" size="8" align="center">
   <h1>Per Song Stats</h1>
-  <table class="table table-dark skinny_table centered">
+  <table class="table table-dark skinny centered">
     <thead>
       <tr>
         <th>Album Name</th>

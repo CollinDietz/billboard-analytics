@@ -16,15 +16,14 @@ $ALBUM_IDENT = "Album Name";
 </head>
 
 <body class="body">
-  <h1 class="text-center text-capitalize green">
-    <?php echo $chart_name." For ".date("D M d, Y", strtotime($date)); ?>
-  </h1>
   <?php include_once("main_nav_bar.php") ?>
-
+  <h2 class="text-center text-capitalize green">
+    <?php echo $chart_name." For ".date("D M d, Y", strtotime($date)); ?>
+  </h2>
 
     <form action=<?php echo site_url("chart/chart_pick")?> method="post">
       <div class="form-inline justify-content-center">
-        <select class="form-control text-capitalize" name="chart">
+        <select class="form-control text-capitalize mr-sm-2" name="chart">
           <?php foreach ($charts_list as $chart_list_item){
 
             if ($chart_list_item["chart_name"] == $chart_name)
@@ -52,13 +51,13 @@ $ALBUM_IDENT = "Album Name";
             });
           </script>
 
-        <button type="submit" class="btn btn-success">See Chart</button>
+        <button type="submit" class="btn btn-outline-light ml-sm-2">See Chart</button>
       </div>
     </form>
 
 
   <?php if (count($chart) > 0): ?>
-  <table class="table table-dark skinny_table centered">
+  <table class="table table-dark skinny centered">
     <thead>
       <tr>
         <th>#</th>
