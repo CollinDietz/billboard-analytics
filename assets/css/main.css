@@ -28,6 +28,10 @@
   color : #828282;
 }
 
+.white{
+  color : #FFFFFF;
+}
+
 a:link {
     color:white;
 }

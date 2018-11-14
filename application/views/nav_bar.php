@@ -1,13 +1,5 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
-<style type='text/css'>
-.btn-group-wrap {
-    text-align: center;
-    vertical-align: bottom;
-}
-</style>
-
 <nav class="nav-bar navbar-expand-lg navbar-light">
       <button class="nav-link" href='<?php echo site_url('admin/artists')?>' role="button">Artists</button>
       <a class="btn btn-primary" href='<?php echo site_url('admin/albums')?>' role="button">Albums</a>

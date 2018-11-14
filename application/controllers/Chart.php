@@ -44,6 +44,7 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
     "chart"=>$chart,
     "entry_type"=>$entry_identifier,
     "chart_name"=>$chart_name,
+    "chart_name_norm"=>ucwords(str_replace("-", " ", $chart_name)),
     "date"=>$date,
     "charts_list"=>$this->Chart_model->get_all_chart_names());
 

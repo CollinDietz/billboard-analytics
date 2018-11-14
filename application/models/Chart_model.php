@@ -29,7 +29,12 @@ class Chart_model extends CI_Model {
   function get_all_chart_names()
   {
    $get_chart_names = "SELECT chart_name FROM CHARTS";
-   return $this->db->query($get_chart_names)->result_array();
+   $result = $this->db->query($get_chart_names)->result_array();
+   foreach ($result as $key => $value)
+   {
+     $result[$key]["chart_name"] = ucwords(str_replace("-", " ", $value["chart_name"]));
+   }
+   return $result;
   }
 
 }

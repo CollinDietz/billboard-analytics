@@ -17,25 +17,26 @@ $ALBUM_IDENT = "Album Name";
 
 <body class="body">
   <?php include_once("main_nav_bar.php") ?>
-  <h2 class="text-center text-capitalize green">
-    <?php echo $chart_name." For ".date("D M d, Y", strtotime($date)); ?>
+
+
+  <h2 class="text-center green">
+    <?php echo $chart_name_norm." For ".date("D M d, Y", strtotime($date)); ?>
   </h2>
+
+  <nav class="navbar">
+    <ul class="nav mx-auto">
+      <?php foreach ($charts_list as $row): ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url()."/chart/view/".str_replace(" ", "-", strtolower($row["chart_name"]))."/".$date?>"><?php echo $row["chart_name"] ?></a>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </nav>
 
     <form action=<?php echo site_url("chart/chart_pick")?> method="post">
       <div class="form-inline justify-content-center">
-        <select class="form-control text-capitalize mr-sm-2" name="chart">
-          <?php foreach ($charts_list as $chart_list_item){
-
-            if ($chart_list_item["chart_name"] == $chart_name)
-            {
-              echo "<option selected>", $chart_list_item["chart_name"], "</option>";
-            }
-            else
-            {
-              echo "<option>", $chart_list_item["chart_name"], "</option>";
-            }
-          } ?>
         </select>
+          <input type="hidden" name="chart" value="<?php echo $chart_name?>">
           <div id="sandbox-container">
           <div class="input-group date">
             <input type="text" class="form-control" name="date" value=<?php echo date("m/d/Y", strtotime($date)) ?>><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>

@@ -11,6 +11,7 @@ $this->load->helper('html');
 </head>
 
 <body class="body">
+<?php include_once("main_nav_bar.php") ?>
 
 <?php require_once("loginForm.php"); ?>
 
