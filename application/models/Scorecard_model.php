@@ -40,4 +40,27 @@ class ScoreCard_model extends CI_Model {
     $results = $this->db->query($FirstAndLastApperancePerChart, array($artist_id,$artist_id));
     return $results->result_array();
   }
+
+  function ArtistsSongsFirstAndLastApperances($artist_id)
+  {
+    $FirstAndLastApperancePerChart = 'SELECT song_name, chart_name, min(date) as FirstAppearance, max(date) as MostRecentApperance from SONGS NATURAL JOIN CHARTED NATURAL JOIN CHARTS WHERE artist_id = ? GROUP BY song_name, chart_name HAVING min(date)';
+    $results = $this->db->query($FirstAndLastApperancePerChart, array($artist_id));
+    $results = $results->result_array();
+    return $results;
+  }
+
+  function ArtistsAlbumsFirstAndLastApperances($artist_id)
+  {
+    $FirstAndLastApperancePerChart =
+    'SELECT album_name, chart_name,
+    min(date) as FirstAppearance,
+    max(date) as MostRecentApperance,
+    count(DISTINCT date) as WeeksOnChart
+    FROM ALBUMS NATURAL JOIN CHARTED NATURAL JOIN CHARTS
+    WHERE artist_id = 7
+    GROUP BY album_name, chart_name';
+    $results = $this->db->query($FirstAndLastApperancePerChart, array($artist_id));
+    $results = $results->result_array();
+    return $results;
+  }
 }

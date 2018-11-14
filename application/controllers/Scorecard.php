@@ -27,13 +27,18 @@ function Artist($parameter1 = null)
 
   $results = $this->Scorecard_model->GetChartEntriesStats($artist_id);
   $AllTimeChartsStats = $this->Scorecard_model->GetAllTimeStats($artist_id);
-  $Apperances = $this->Scorecard_model->FirstAndLastApperances($artist_id);
+  $ChartApperances = $this->Scorecard_model->FirstAndLastApperances($artist_id);
+  $SongApperancesStats = $this->Scorecard_model->ArtistsSongsFirstAndLastApperances($artist_id);
+  $AlbumApperancesStats = $this->Scorecard_model->ArtistsAlbumsFirstAndLastApperances($artist_id);
+
   $this->load->view("Scorecard_Artist",
    array(
      'artist_name' => $artist_name,
      'data' => $results,
      'AllTimeChartsStats' => $AllTimeChartsStats,
-     'ApperancesStats' => $Apperances,
+     'ChartApperancesStats' => $ChartApperances,
+     'AlbumApperancesStats' => $AlbumApperancesStats,
+     'SongApperancesStats' => $SongApperancesStats
    ));
 }
 

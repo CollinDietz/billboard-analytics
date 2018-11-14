@@ -73,6 +73,7 @@
 
 
   <br>
+  <h1>All Time Stats</h1>
   <table class="table table-dark skinny_table centered">
     <thead>
       <tr>
@@ -93,17 +94,18 @@
   </table>
 
   <br>
+  <h1>Per Chart Stats</h1>
   <table class="table table-dark skinny_table centered">
     <thead>
       <tr>
-        <th> Chart </th>
+        <th>Chart</th>
         <th>First Apperance</th>
         <th>Most Recent Apperance</th>
       </tr>
     </thead>
 
     <tbody>
-      <?php foreach ($ApperancesStats as $row):?>
+      <?php foreach ($ChartApperancesStats as $row):?>
         <tr>
         <td>
           <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?>
@@ -117,6 +119,68 @@
       </tr>
       <?php endforeach; ?>
     </tbody>
+  </table>
+
+  <br>
+  <h1>Per Album Stats</h1>
+  <table class="table table-dark skinny_table centered">
+    <thead>
+      <tr>
+        <th>Album Name</th>
+        <th>Chart</th>
+        <th>First Apperance</th>
+        <th>Most Recent Apperance</th>
+        <th> Weeks On Chart </th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+    $currSong = "";
+    foreach ($AlbumApperancesStats as $row):?>
+    <tr>
+    <td>
+      <?php if($currSong != $row["album_name"]): ?>
+      <?php  $currSong = $row["album_name"]; ?>
+      <?php echo $row["album_name"];?>
+      <?php endif;?>
+    </td>
+      <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
+      <td> <?php echo $row["FirstAppearance"]?> </td>
+      <td> <?php echo $row["MostRecentApperance"]?> </td>
+      <td> <?php echo $row["WeeksOnChart"] ?> </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+  </table>
+
+  <br>
+  <h1>Per Song Stats</h1>
+  <table class="table table-dark skinny_table centered">
+    <thead>
+      <tr>
+        <th>Song Name</th>
+        <th>Chart</th>
+        <th>First Apperance</th>
+        <th>Most Recent Apperance</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+    $currSong = "";
+    foreach ($SongApperancesStats as $row):?>
+    <tr>
+      <?php if($currSong != $row["song_name"]): ?>
+        <?php  $currSong = $row["song_name"]; ?>
+        <td> <?php echo $row["song_name"]?> </td>
+      <?php else:?>
+        <td></td>
+      <?php endif;?>
+      <td> <?php echo $row["chart_name"]?> </td>
+      <td> <?php echo $row["FirstAppearance"]?> </td>
+      <td> <?php echo $row["MostRecentApperance"]?> </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
   </table>
 
 </body>
