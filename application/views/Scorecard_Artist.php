@@ -151,8 +151,8 @@
       <td> <?php echo $row["FirstAppearance"]?> </td>
       <td> <?php echo $row["MostRecentApperance"]?> </td>
       <td> <?php echo $row["WeeksOnChart"] ?> </td>
-      <td> <?php echo $row["MinRank"] ?> </td>
       <td> <?php echo $row["MaxRank"] ?> </td>
+      <td> <?php echo $row["MinRank"] ?> </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
@@ -187,8 +187,8 @@
         <td> <?php echo $row["FirstAppearance"]?> </td>
         <td> <?php echo $row["MostRecentApperance"]?> </td>
         <td> <?php echo $row["WeeksOnChart"] ?> </td>
-        <td> <?php echo $row["MinRank"] ?> </td>
         <td> <?php echo $row["MaxRank"] ?> </td>
+        <td> <?php echo $row["MinRank"] ?> </td>
       </tr>
       <?php endforeach; ?>
   </tbody>
