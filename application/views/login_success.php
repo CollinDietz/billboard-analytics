@@ -19,4 +19,5 @@ $this->load->helper('html');
   </h1>
 
   <h2 class="text-center text-capitalize green">Login Success</h2>
+  <h3 class="text-center green">Loading....</h3>
 </body
