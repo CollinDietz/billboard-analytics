@@ -13,6 +13,12 @@
 
 body {
   background-color: black;
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }
 
 html {
@@ -38,7 +44,7 @@ html {
 }
 
 a:link {
-    color:white;
+  color:white;
 }
 
 a:visited {
