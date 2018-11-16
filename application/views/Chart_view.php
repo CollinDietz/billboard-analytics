@@ -3,9 +3,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
 <body class="body">
-  <h2 class="text-center green">
+  <br>
+  <h3 class="text-center green">
     <?php echo $chart_name_norm." For ".date("D M d, Y", strtotime($date)); ?>
-  </h2>
+  </h3>
 
   <nav class="navbar">
     <ul class="nav mx-auto">

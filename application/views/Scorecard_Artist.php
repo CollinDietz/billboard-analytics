@@ -1,7 +1,7 @@
 <body class="body">
-  <h1 class="text-center green">
+  <h3 class="text-center green">
     <?php echo $artist_name ?>
-  </h1>
+  </h3>
   <?php if(isset($_SESSION["user"])): ?>
       <form class="form-inline justify-content-center" action="" method="post">
         <?php if($IsFavorite): ?>
@@ -67,7 +67,7 @@
   </script>
 
 
-  <h1>All Time Stats</h1>
+  <h3>All Time Stats</h3>
   <table class="table table-dark skinny centered">
     <thead>
       <tr>
@@ -88,7 +88,7 @@
   </table>
 
   <hr width="75%" size="8" align="center">
-  <h1>Per Chart Stats</h1>
+  <h3>Per Chart Stats</h3>
   <table class="table table-dark skinny centered">
     <thead>
       <tr>
@@ -109,65 +109,30 @@
     </tbody>
   </table>
 
-  <hr width="75%" size="8" align="center">
-  <h1>Per Album Stats</h1>
-  <table class="table table-dark skinny centered">
-    <thead>
-      <tr>
-        <th>Album Name</th>
-        <th>Chart</th>
-        <th>First Apperance</th>
-        <th>Most Recent</th>
-        <th>Total Weeks</th>
-        <th>Lowest Rank</th>
-        <th>Peak Rank</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php
-    $currSong = "";
-    foreach ($AlbumApperancesStats as $row):?>
-    <tr>
-    <td>
-      <?php if($currSong != $row["album_name"]): ?>
-      <?php  $currSong = $row["album_name"]; ?>
-      <?php LinkToScoreCard($row["album_name"], "album")?>
-      <?php endif;?>
-    </td>
-      <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
-      <td> <?php LinkToChartByDate($row["chart_name"], $row["FirstAppearance"])?></td>
-      <td> <?php LinkToChartByDate($row["chart_name"], $row["MostRecentApperance"])?></td>
-      <td> <?php echo $row["WeeksOnChart"] ?> </td>
-      <td> <?php echo $row["LowestRank"] ?> </td>
-      <td> <?php echo $row["BestRank"] ?> </td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-  </table>
-
-  <hr width="75%" size="8" align="center">
-  <h1>Per Song Stats</h1>
-  <table class="table table-dark skinny centered">
-    <thead>
-      <tr>
-        <th>Song Name</th>
-        <th>Chart</th>
-        <th>First Apperance</th>
-        <th>Most Recent</th>
-        <th>Total Weeks</th>
-        <th>Lowest Rank</th>
-        <th>Peak Rank</th>
-      </tr>
-    </thead>
-    <tbody>
+  <?php if(count($AlbumApperancesStats) > 0):?>
+    <hr width="75%" size="8" align="center">
+    <h3>Per Album Stats</h3>
+    <table class="table table-dark skinny centered">
+      <thead>
+        <tr>
+          <th>Album Name</th>
+          <th>Chart</th>
+          <th>First Apperance</th>
+          <th>Most Recent</th>
+          <th>Total Weeks</th>
+          <th>Lowest Rank</th>
+          <th>Peak Rank</th>
+        </tr>
+      </thead>
+      <tbody>
       <?php
       $currSong = "";
-      foreach ($SongApperancesStats as $row):?>
+      foreach ($AlbumApperancesStats as $row):?>
       <tr>
       <td>
-        <?php if($currSong != $row["song_name"]): ?>
-        <?php  $currSong = $row["song_name"]; ?>
-        <?php LinkToScoreCard($row["song_name"], "song")?>
+        <?php if($currSong != $row["album_name"]): ?>
+        <?php  $currSong = $row["album_name"]; ?>
+        <?php LinkToScoreCard($row["album_name"], "album")?>
         <?php endif;?>
       </td>
         <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
@@ -178,7 +143,46 @@
         <td> <?php echo $row["BestRank"] ?> </td>
       </tr>
       <?php endforeach; ?>
-  </tbody>
-  </table>
+    </tbody>
+    </table>
+  <?php endif;?>
+
+  <?php if(count($SongApperancesStats) > 0):?>
+    <hr width="75%" size="8" align="center">
+    <h3>Per Song Stats</h3>
+    <table class="table table-dark skinny centered">
+      <thead>
+        <tr>
+          <th>Song Name</th>
+          <th>Chart</th>
+          <th>First Apperance</th>
+          <th>Most Recent</th>
+          <th>Total Weeks</th>
+          <th>Lowest Rank</th>
+          <th>Peak Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $currSong = "";
+        foreach ($SongApperancesStats as $row):?>
+        <tr>
+        <td>
+          <?php if($currSong != $row["song_name"]): ?>
+          <?php  $currSong = $row["song_name"]; ?>
+          <?php LinkToScoreCard($row["song_name"], "song")?>
+          <?php endif;?>
+        </td>
+          <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
+          <td> <?php LinkToChartByDate($row["chart_name"], $row["FirstAppearance"])?></td>
+          <td> <?php LinkToChartByDate($row["chart_name"], $row["MostRecentApperance"])?></td>
+          <td> <?php echo $row["WeeksOnChart"] ?> </td>
+          <td> <?php echo $row["LowestRank"] ?> </td>
+          <td> <?php echo $row["BestRank"] ?> </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+    </table>
+  <?php endif;?>
 
 </body>

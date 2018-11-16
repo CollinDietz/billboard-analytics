@@ -1,6 +1,6 @@
 <body>
   <div class="container skinny">
-    <h2 class="green"> Your Favorites </h2>
+    <h3 class="green"> Your Favorites </h3>
   </div>
   <hr width="75%" size="8" align="center">
   <?php if(count($fav_artists) == 0): ?>

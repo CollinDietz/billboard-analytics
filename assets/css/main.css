@@ -13,7 +13,7 @@
 
 body {
   background-color: black;
-  padding-top: 60px;
+  padding-top: 65px;
 }
 @media (max-width: 979px) {
   body {
@@ -63,6 +63,7 @@ h1
 
 h3
 {
+  text-align: center;
   color :#1DB954;
 }
 

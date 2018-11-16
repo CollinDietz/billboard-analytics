@@ -1,5 +1,5 @@
 <body class="body">
-  <h1 class="text-center green">
+  <h3 class="text-center green">
     <?php echo $song_name ?>
-  </h1>
+  </h3>
 </body>

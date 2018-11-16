@@ -1,7 +1,7 @@
 <body class="body">
-  <h2 class="text-center green">
+  <h3 class="text-center green">
     <?php echo "Results for ".$query ?>
-  </h2>
+  </h3>
 
   <?php function show_results($results_array, $header, $endpoint, $itemkey, $include_artist, $max_size){?>
     <?php if(count($results_array) > 0): ?>
