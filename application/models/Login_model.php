@@ -11,7 +11,7 @@ class Login_model extends CI_Model
     }
     else
     {
-      $password = $results->result_array()[0]["Password"];
+      $password = $results->result_array()[0]["password"];
       if($password != $passwordToCheck)
       {
         return FALSE;

@@ -68,10 +68,16 @@ h3
   margin: 0 auto;
 }
 
-.btn-outline-light:hover{
+.btn-select:hover{
   color: #1DB954;
   background-color: black;
   border-color: #1DB954;
+}
+
+.btn-remove:hover{
+  color: #dc3545;
+  background-color: black;
+  border-color: #dc3545;
 }
 
 td,
