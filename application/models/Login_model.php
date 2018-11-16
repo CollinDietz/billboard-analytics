@@ -3,7 +3,7 @@ class Login_model extends CI_Model
 {
   function CheckPasswordForUserName($username, $passwordToCheck)
   {
-    $results = $this->db->query("SELECT Password FROM Accounts WHERE Username=?", array($username));
+    $results = $this->db->query("SELECT password FROM ACCOUNTS WHERE username=?", array($username));
 
     if(sizeof($results->result_array()) == 0)
     {
@@ -25,8 +25,8 @@ class Login_model extends CI_Model
 
   function CheckForUser($username)
   {
-    $results = $this->db->query("SELECT count(Username) FROM Accounts WHERE Username=?", array($username));
-    return $results->result_array()[0]['count(Username)'] > 0;
+    $results = $this->db->query("SELECT count(username) FROM ACCOUNTS WHERE username=?", array($username));
+    return $results->result_array()[0]['count(username)'] > 0;
   }
 
   function InsertUser($username, $password)
@@ -34,7 +34,7 @@ class Login_model extends CI_Model
     if(!$this->CheckForUser($username) && $password !=  '' && strlen($username) <= 10 && strlen($password) <= 10)
     {
       $this->db->query(
-        "INSERT INTO Accounts (Username, Password) VALUES (?,?)",
+        "INSERT INTO ACCOUNTS (username, password) VALUES (?,?)",
        array($username, $password));
        return TRUE;
     }
