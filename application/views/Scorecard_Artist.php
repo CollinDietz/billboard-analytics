@@ -101,15 +101,9 @@
     <tbody>
       <?php foreach ($ChartApperancesStats as $row):?>
         <tr>
-        <td>
-          <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?>
-        </td>
-        <td>
-          <?php echo $row["FirstApperance"] ?>
-        </td>
-        <td>
-          <?php echo $row["MostRecentApperance"] ?>
-        </td>
+        <td><?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?></td>
+        <td> <?php LinkToChartByDate($row["chart_name"], $row["FirstApperance"])?></td>
+        <td> <?php LinkToChartByDate($row["chart_name"], $row["MostRecentApperance"])?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>
@@ -137,12 +131,12 @@
     <td>
       <?php if($currSong != $row["album_name"]): ?>
       <?php  $currSong = $row["album_name"]; ?>
-      <?php echo $row["album_name"];?>
+      <?php LinkToScoreCard($row["album_name"], "album")?>
       <?php endif;?>
     </td>
       <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
-      <td> <?php echo $row["FirstAppearance"]?> </td>
-      <td> <?php echo $row["MostRecentApperance"]?> </td>
+      <td> <?php LinkToChartByDate($row["chart_name"], $row["FirstAppearance"])?></td>
+      <td> <?php LinkToChartByDate($row["chart_name"], $row["MostRecentApperance"])?></td>
       <td> <?php echo $row["WeeksOnChart"] ?> </td>
       <td> <?php echo $row["LowestRank"] ?> </td>
       <td> <?php echo $row["BestRank"] ?> </td>
@@ -156,7 +150,7 @@
   <table class="table table-dark skinny centered">
     <thead>
       <tr>
-        <th>Album Name</th>
+        <th>Song Name</th>
         <th>Chart</th>
         <th>First Apperance</th>
         <th>Most Recent</th>
@@ -173,12 +167,12 @@
       <td>
         <?php if($currSong != $row["song_name"]): ?>
         <?php  $currSong = $row["song_name"]; ?>
-        <?php echo $row["song_name"];?>
+        <?php LinkToScoreCard($row["song_name"], "song")?>
         <?php endif;?>
       </td>
         <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
-        <td> <?php echo $row["FirstAppearance"]?> </td>
-        <td> <?php echo $row["MostRecentApperance"]?> </td>
+        <td> <?php LinkToChartByDate($row["chart_name"], $row["FirstAppearance"])?></td>
+        <td> <?php LinkToChartByDate($row["chart_name"], $row["MostRecentApperance"])?></td>
         <td> <?php echo $row["WeeksOnChart"] ?> </td>
         <td> <?php echo $row["LowestRank"] ?> </td>
         <td> <?php echo $row["BestRank"] ?> </td>

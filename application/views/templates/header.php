@@ -2,13 +2,13 @@
 <?php
 if(!isset($_SESSION['pageHistory']))
 {
-  $_SESSION['pageHistory'] = array(current_url(), site_url(), site_url());
+  $_SESSION['pageHistory'] = array(current_url_full(), site_url(), site_url());
 }
-else
+else if($_SESSION['pageHistory'][0] != current_url_full())
 {
   $_SESSION['pageHistory'][2] = $_SESSION['pageHistory'][1];
   $_SESSION['pageHistory'][1] = $_SESSION['pageHistory'][0];
-  $_SESSION['pageHistory'][0] = current_url();
+  $_SESSION['pageHistory'][0] = current_url_full();
 }
  ?>
 <!DOCTYPE html>

@@ -86,7 +86,6 @@ function Song($parameter1 = null)
     show_404();
   }
 
-  $song_name = str_replace("_", " ",$parameter1);
   $this->load->template("Scorecard_Song", array("song_name" => $song_name));
 
 }
@@ -98,7 +97,6 @@ function Album($parameter1 = null)
     show_404();
   }
 
-  $album_name = str_replace("_", " ",$parameter1);
   $this->load->template("Scorecard_Album", array("album_name" => $album_name));
 }
 

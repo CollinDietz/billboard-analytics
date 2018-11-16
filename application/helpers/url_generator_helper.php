@@ -8,4 +8,10 @@ function LinkToScoreCard($element_name, $endpoint)
 <?php
 }
 
+function LinkToChartByDate($chart_name, $date)
+{ ?>
+  <a href= "<?php echo site_url("chart/view/$chart_name/$date");?>"> <?php echo $date ?> </a>
+<?php
+}
+
 ?>

@@ -11,5 +11,5 @@
     <label>Password</label>
     <input type="password" class="form-control" name="InputPassword" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-outline-light"><?php echo $button_text?></button>
+  <button type="submit" class="btn btn-outline-light btn-select"><?php echo $button_text?></button>
 </form>

@@ -12,7 +12,7 @@
       <div class="container skinny">
       <div class="row">
         <div class="col-3">
-            <a href= <?php echo "$link"?>> <?php echo $row["artist_name"]?> </a>
+          <?php LinkToScoreCard($row["artist_name"], "artist")?>
         </div>
       </div>
     </div>
