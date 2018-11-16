@@ -13,14 +13,30 @@ $this->load->helper('url');
 
 }
 
+function _GetNameOfElement($param)
+{
+  if(isset($_GET["name"]))
+  {
+    $artist_name = urldecode($_GET["name"]);
+    return $artist_name;
+  }
+  else if($param != NULL)
+  {
+    $artist_name = str_replace("_", " ",$param);
+    return $artist_name;
+  }
+  else
+  {
+    return FALSE;
+  }
+}
+
 function Artist($parameter1 = null)
 {
-  if($parameter1 == NULL)
+  if(($artist_name = $this->_GetNameOfElement($parameter1)) == FALSE)
   {
     show_404();
   }
-
-  $artist_name = str_replace("_", " ",$parameter1);
 
   $this->load->model("Scorecard_model");
   $artist_id = $this->Scorecard_model->GetArtistID($artist_name);
@@ -65,7 +81,7 @@ function Artist($parameter1 = null)
 
 function Song($parameter1 = null)
 {
-  if($parameter1 == NULL)
+  if(($song_name = $this->_GetNameOfElement($parameter1)) == FALSE)
   {
     show_404();
   }
@@ -77,7 +93,7 @@ function Song($parameter1 = null)
 
 function Album($parameter1 = null)
 {
-  if($parameter1 == NULL)
+  if(($album_name = $this->_GetNameOfElement($parameter1)) == FALSE)
   {
     show_404();
   }

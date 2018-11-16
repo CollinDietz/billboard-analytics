@@ -37,7 +37,7 @@
             });
           </script>
 
-        <button type="submit" class="btn btn-outline-light ml-sm-2">See Chart</button>
+        <button type="submit" class="btn btn-outline-light btn-select ml-sm-2">See Chart</button>
       </div>
     </form>
 
@@ -74,10 +74,7 @@
           ?>
         </td>
         <td>
-          <?php
-          $name = str_replace(" ", "_", $row["artist_name"]);
-          $artist_link = site_url("/scorecard/artist/$name");?>
-          <a href= <?php echo "$artist_link>".$row["artist_name"]?> </a>
+          <?php LinkToScoreCard($row["artist_name"], "artist")?>
         </td>
       </tr>
       <?php endforeach; ?>

@@ -11,25 +11,19 @@
     </div>
 
     <?php foreach ($results_array as $row): ?>
-      <?php
-      $name = str_replace(" ", "_", $row[$itemkey]);
-      $link = site_url("/scorecard/$endpoint/$name");?>
       <div class="container skinny">
       <div class="row">
         <div class="col-3">
-            <a href= <?php echo "$link"?>> <?php echo $row[$itemkey]?> </a>
+          <?php LinkToScoreCard($row[$itemkey], $endpoint)?>
         </div>
-            <?php if($include_artist == True):
-              $aname = $row['artist_name'];
-              $link_aname = str_replace(" ", "_", $aname)
-              ?>
+          <?php if($include_artist == True):?>
         <div class="col-md-auto">
-              <span class="grey">by<span>
+          <span class="grey">by<span>
         </div>
         <div class="col-sm">
-              <a href= <?php echo site_url("/scorecard/artist/$link_aname") ?>> <?php echo $aname ?> </a>
+          <?php LinkToScoreCard($row['artist_name'], "artist")?>
         </div>
-            <?php endif; ?>
+          <?php endif; ?>
       </div>
     </div>
     <?php endforeach; endif;?>

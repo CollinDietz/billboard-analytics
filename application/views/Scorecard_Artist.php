@@ -7,7 +7,7 @@
         <?php if($IsFavorite): ?>
           <button class="btn btn-sm btn-outline-light btn-remove" name="action" value="unfavorite">Unfavorite</button>
         <?php else: ?>
-          <button class="btn btn-sm btn-outline-light" name="action" value="favorite">Favorite</button>
+          <button class="btn btn-sm btn-outline-light btn-select" name="action" value="favorite">Favorite</button>
     <?php endif; ?>
     </form>
   <?php endif; ?>
