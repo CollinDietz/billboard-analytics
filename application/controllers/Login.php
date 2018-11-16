@@ -17,7 +17,7 @@ class Login extends CI_Controller {
   {
     if(count($_POST) == 0)
     {
-      $this->load->view("Login_view", array("message" => "", "button_text" => "Login"));
+      $this->load->template("Login_view", array("message" => "", "button_text" => "Login"));
     }
     else
     {
@@ -31,7 +31,7 @@ class Login extends CI_Controller {
       }
       else
       {
-        $this->load->view("Login_view", array("message" => "Failed", "button_text" => "Login"));
+        $this->load->template("Login_view", array("message" => "Failed", "button_text" => "Login"));
       }
     }
   }
@@ -40,7 +40,7 @@ class Login extends CI_Controller {
   {
     if(count($_POST) == 0)
     {
-      $this->load->view("Register_view", array("message" => "", "button_text" => "Register"));
+      $this->load->template("Register_view", array("message" => "", "button_text" => "Register"));
     }
     else
     {
@@ -53,7 +53,7 @@ class Login extends CI_Controller {
       }
       else
       {
-        $this->load->view("Register_view", array("message" => "Failed", "button_text" => "Register"));
+        $this->load->template("Register_view", array("message" => "Failed", "button_text" => "Register"));
       }
     }
   }
