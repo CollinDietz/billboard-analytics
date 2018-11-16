@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+
 <body class="body">
   <h2 class="text-center green">
     <?php echo $chart_name_norm." For ".date("D M d, Y", strtotime($date)); ?>
@@ -28,7 +32,8 @@
               daysOfWeekDisabled: "0,1,2,3,4,5",
               daysOfWeekHighlighted: "6",
               todayHighlight: true,
-              autoclose: true
+              autoclose: true,
+              orientation: "bottom auto"
             });
           </script>
 
@@ -58,7 +63,7 @@
         </td>
         <td>
           <?php
-            if($entry_type == $ALBUM_IDENT)
+            if($IsAlbums)
             {
               echo $row['album_name'];
             }

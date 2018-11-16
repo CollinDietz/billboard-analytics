@@ -33,16 +33,19 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
 
   if ($entry_type == "track")
   {
+    $IsAlbums = FALSE;
     $entry_identifier = "Track Name";
   }
   elseif ($entry_type == "album")
   {
+    $IsAlbums = TRUE;
     $entry_identifier = "Album Name";
   }
 
   $view_vars = array(
     "chart"=>$chart,
     "entry_type"=>$entry_identifier,
+    "IsAlbums"=>$IsAlbums,
     "chart_name"=>$chart_name,
     "chart_name_norm"=>ucwords(str_replace("-", " ", $chart_name)),
     "date"=>$date,
