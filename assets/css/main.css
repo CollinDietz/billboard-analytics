@@ -11,9 +11,14 @@
   font-size: 300%
 }
 
-.body {
+body {
   background-color: black;
 }
+
+html {
+  background-color: black;
+}
+
 
 .offset_text {
   position: relative;

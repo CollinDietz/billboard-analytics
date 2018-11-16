@@ -26,11 +26,12 @@ class Login extends CI_Controller {
       $status = $this->Login_model->CheckPasswordForUserName($_POST["InputUsername"], $_POST["InputPassword"]);
       if($status)
       {
-        $this->load->view("login_success");
+        $_SESSION["user"] = $_POST["InputUsername"];
+        redirect($_SESSION['pageHistory'][1]);
       }
       else
       {
-        $this->load->view("Login_view", array("message" => "Failed"));
+        $this->load->view("Login_view", array("message" => "Failed", "button_text" => "Login"));
       }
     }
   }
@@ -47,7 +48,8 @@ class Login extends CI_Controller {
       $status =  $this->Login_model->InsertUser($_POST["InputUsername"], $_POST["InputPassword"]);
       if($status)
       {
-        $this->load->view("register_success");
+        $_SESSION["user"] = $_POST["InputUsername"];
+        redirect($_SESSION['pageHistory'][2]);
       }
       else
       {

@@ -1,20 +1,4 @@
-<?php $this->load->helper('html'); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <?php echo link_tag('assets/css/main.css');?>
-
-</head>
-
 <body class="body">
-  <?php include_once("main_nav_bar.php") ?>
   <h2 class="text-center green">
     <?php echo "Results for ".$query ?>
   </h2>

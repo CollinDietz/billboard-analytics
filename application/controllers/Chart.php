@@ -48,7 +48,7 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
     "date"=>$date,
     "charts_list"=>$this->Chart_model->get_all_chart_names());
 
-  $this->load->view("Chart_view",$view_vars);
+  $this->load->template("Chart_view",$view_vars);
 }
 
 public function index()

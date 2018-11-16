@@ -1,23 +1,16 @@
-<?php $this->load->helper('html'); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <?php echo link_tag('assets/css/main.css');?>
-
-</head>
-
 <body class="body">
-  <?php include_once("main_nav_bar.php") ?>
-  <h2 class="text-center green">
+  <h1 class="text-center green">
     <?php echo $artist_name ?>
-  </h2>
+  </h1>
+  <?php if(isset($_SESSION["user"])): ?>
+      <form class="form-inline justify-content-center" action="" method="post">
+        <?php if($IsFavorite): ?>
+          <button class="btn btn-sm btn-outline-danger" name="action" value="unfavorite">Unfavorite</button>
+        <?php else: ?>
+          <button class="btn btn-sm btn-outline-light" name="action" value="favorite">Favorite</button>
+    <?php endif; ?>
+    </form>
+  <?php endif; ?>
   <hr width="75%" size="8" align="center">
 
   <div class="grey">

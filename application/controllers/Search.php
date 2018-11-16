@@ -64,7 +64,7 @@ function index()
     $ChartsResults = $this->Search_model->SearchCharts($query, $num_charts);
 
 
-    $this->load->view("SearchResults",
+    $this->load->template("SearchResults",
      array(
        'query' => $query,
        'ArtistResults' => $ArtistResults,
