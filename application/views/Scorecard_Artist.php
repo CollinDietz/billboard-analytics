@@ -132,7 +132,7 @@
       <td>
         <?php if($currSong != $row["album_name"]): ?>
         <?php  $currSong = $row["album_name"]; ?>
-        <?php LinkToScoreCard($row["album_name"], "album")?>
+        <?php LinkToScoreCard($row["album_name"], "album", $artist_name)?>
         <?php endif;?>
       </td>
         <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>
@@ -170,7 +170,7 @@
         <td>
           <?php if($currSong != $row["song_name"]): ?>
           <?php  $currSong = $row["song_name"]; ?>
-          <?php LinkToScoreCard($row["song_name"], "song")?>
+          <?php LinkToScoreCard($row["song_name"], "song", $artist_name)?>
           <?php endif;?>
         </td>
           <td> <?php echo ucwords(str_replace("-", " ",  $row["chart_name"])) ?> </td>

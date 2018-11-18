@@ -13,22 +13,55 @@ $this->load->helper('url');
 
 }
 
-function _GetNameOfElement($param)
+function _GetNameOfElementAndArtist($param1, $param2)
 {
+  $data = array();
   if(isset($_GET["name"]))
   {
-    $artist_name = urldecode($_GET["name"]);
-    return $artist_name;
+    $data['name'] = urldecode($_GET["name"]);
   }
-  else if($param != NULL)
+  else if($param1 != NULL)
   {
-    $artist_name = str_replace("_", " ",$param);
-    return $artist_name;
+    $data['name'] = str_replace("_", " ",$param1);
   }
   else
   {
     return FALSE;
   }
+
+  if(isset($_GET["by"]))
+  {
+    $data['artist_name'] = urldecode($_GET["by"]);
+  }
+  else if($param2 != NULL)
+  {
+    $data['artist_name'] = str_replace("_", " ",$param2);
+  }
+  else
+  {
+    return FALSE;
+  }
+
+  return $data;
+}
+
+function _GetNameOfElement($param1)
+{
+  $data = array();
+  if(isset($_GET["name"]))
+  {
+    $data['name'] = urldecode($_GET["name"]);
+  }
+  else if($param1 != NULL)
+  {
+    $data['name'] = str_replace("_", " ",$param1);
+  }
+  else
+  {
+    return FALSE;
+  }
+
+  return $data['name'];
 }
 
 function Artist($parameter1 = null)
@@ -79,25 +112,25 @@ function Artist($parameter1 = null)
    ));
 }
 
-function Song($parameter1 = null)
+function Song($parameter1 = null, $parameter2 = null)
 {
-  if(($song_name = $this->_GetNameOfElement($parameter1)) == FALSE)
+  if(($data = $this->_GetNameOfElementAndArtist($parameter1, $parameter2)) == FALSE)
   {
     show_404();
   }
 
-  $this->load->template("Scorecard_SongsAndAlbums", array("name" => $song_name));
+  $this->load->template("Scorecard_SongsAndAlbums", $data);
 
 }
 
-function Album($parameter1 = null)
+function Album($parameter1 = null, $parameter2 = null)
 {
-  if(($album_name = $this->_GetNameOfElement($parameter1)) == FALSE)
+  if(($data = $this->_GetNameOfElementAndArtist($parameter1, $parameter2)) == FALSE)
   {
     show_404();
   }
 
-  $this->load->template("Scorecard_SongsAndAlbums", array("name" => $album_name));
+  $this->load->template("Scorecard_SongsAndAlbums", $data);
 }
 
 

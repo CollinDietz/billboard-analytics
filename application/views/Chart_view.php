@@ -66,11 +66,11 @@
           <?php
             if($IsAlbums)
             {
-              LinkToScoreCard($row['album_name'], "album");
+              LinkToScoreCard($row['album_name'], "album", $row["artist_name"]);
             }
             else
             {
-              LinkToScoreCard($row['song_name'], "song");
+              LinkToScoreCard($row['song_name'], "song", $row["artist_name"]);
             }
           ?>
         </td>
