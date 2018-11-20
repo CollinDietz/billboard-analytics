@@ -8,7 +8,7 @@
     <?php echo $chart_name_norm." For ".date("D M d, Y", strtotime($date)); ?>
   </h3>
 
-  <nav class="navbar">
+  <nav class="nav">
     <ul class="nav mx-auto">
       <?php foreach ($charts_list as $row): ?>
         <li class="nav-item">
