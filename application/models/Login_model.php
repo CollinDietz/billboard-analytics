@@ -31,7 +31,7 @@ class Login_model extends CI_Model
 
   function InsertUser($username, $password)
   {
-    if(!$this->CheckForUser($username) && $password !=  '' && strlen($username) <= 10 && strlen($password) <= 10)
+    if(!$this->CheckForUser($username) && $password !=  '' && strlen($username) <= 20 && strlen($password) <= 20)
     {
       $this->db->query(
         "INSERT INTO ACCOUNTS (username, password) VALUES (?,?)",
