@@ -45,7 +45,7 @@ else if($_SESSION['pageHistory'][0] != current_url_full())
         </ul>
     </div>
     <div class="mx-auto order-0">
-      <span class="navbar-brand green">Billboard Analytics</span>
+      <span class="navbar-brand green">Chart The Boards</span>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
