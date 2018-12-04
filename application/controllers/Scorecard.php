@@ -125,13 +125,34 @@ function Song($parameter1 = null, $parameter2 = null)
   $artist_id = $this->Scorecard_model->GetArtistID($artist_name);
   $song_id = $this->Scorecard_model->GetSongID($song_name, $artist_id);
 
+  if(isset($_POST["action"]) && isset($_SESSION["user"]))
+  {
+    $this->load->model("UserData_model");
+    if($_POST["action"] == "favorite")
+    {
+      $this->UserData_model->FavoriteSong($_SESSION["user"], $song_id);
+    }
+    else if($_POST["action"] == "unfavorite")
+    {
+      $this->UserData_model->UnfavoriteSong($_SESSION["user"], $song_id);
+    }
+  }
+
   $lineData = $this->Scorecard_model->SongLifeTimePerformance($song_id);
+
+  $IsFavorite = TRUE;
+  if(isset($_SESSION["user"]))
+  {
+    $this->load->model("UserData_model");
+    $IsFavorite = $this->UserData_model->IsSongAUserFavorite($_SESSION["user"], $song_id);
+  }
 
   $this->load->template("Scorecard_SongsAndAlbums",
    array(
      "name"=>$song_name,
      "artist_name"=>$artist_name,
-     "lineData" => $lineData
+     "lineData" => $lineData,
+     'IsFavorite' => $IsFavorite
    ));
 
 }
@@ -148,13 +169,34 @@ function Album($parameter1 = null, $parameter2 = null)
   $artist_id = $this->Scorecard_model->GetArtistID($artist_name);
   $album_id = $this->Scorecard_model->GetAlbumID($album_name, $artist_id);
 
+  if(isset($_POST["action"]) && isset($_SESSION["user"]))
+  {
+    $this->load->model("UserData_model");
+    if($_POST["action"] == "favorite")
+    {
+      $this->UserData_model->FavoriteAlbum($_SESSION["user"], $album_id);
+    }
+    else if($_POST["action"] == "unfavorite")
+    {
+      $this->UserData_model->UnfavoriteAlbum($_SESSION["user"], $album_id);
+    }
+  }
+
   $lineData = $this->Scorecard_model->AlbumLifeTimePerformance($album_id);
+
+  $IsFavorite = TRUE;
+  if(isset($_SESSION["user"]))
+  {
+    $this->load->model("UserData_model");
+    $IsFavorite = $this->UserData_model->IsAlbumAUserFavorite($_SESSION["user"], $album_id);
+  }
 
   $this->load->template("Scorecard_SongsAndAlbums",
    array(
      "name"=>$album_name,
      "artist_name"=>$artist_name,
-     "lineData" => $lineData
+     "lineData" => $lineData,
+     'IsFavorite' => $IsFavorite
    ));
 }
 

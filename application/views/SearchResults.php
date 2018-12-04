@@ -14,7 +14,11 @@
       <div class="container skinny">
       <div class="row">
         <div class="col-3">
-          <?php LinkToScoreCard($row[$itemkey], $endpoint)?>
+          <?php if($include_artist == True):?>
+            <?php LinkToScoreCard($row[$itemkey], $endpoint, $row['artist_name'])?>
+          <?php else: ?>
+            <?php LinkToScoreCard($row[$itemkey], $endpoint)?>
+          <?php endif;?>
         </div>
           <?php if($include_artist == True):?>
         <div class="col-md-auto">
