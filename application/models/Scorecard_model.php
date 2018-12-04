@@ -87,4 +87,118 @@ class ScoreCard_model extends CI_Model {
     $results = $results->result_array();
     return $results;
   }
+
+  function GetAlbumID($album_name, $artist_id)
+  {
+    $GetID =
+    'SELECT album_id
+    FROM ALBUMS
+    WHERE album_name=? AND artist_id=?';
+    $results = $this->db->query($GetID, array($album_name, $artist_id));
+    return $results->result_array()[0]["album_id"];
+  }
+
+  function GetSongID($song_name, $artist_id)
+  {
+    $GetID =
+    'SELECT song_id
+    FROM SONGS
+    WHERE song_name=? AND artist_id=?';
+    $results = $this->db->query($GetID, array($song_name, $artist_id));
+    return $results->result_array()[0]["song_id"];
+  }
+
+  function AlbumLifeTimePerformance($album_id)
+  {
+    $ChartNames =
+    'SELECT DISTINCT(chart_name) FROM CHARTED NATURAL JOIN CHARTS
+    WHERE album_id=?';
+    $charts = $this->db->query($ChartNames, array($album_id))->result_array();
+
+    $AllDates =
+    'SELECT DISTINCT(date) FROM CHARTED NATURAL JOIN CHARTS
+    WHERE album_id=?';
+    $dates = $this->db->query($AllDates, array($album_id))->result_array();
+
+    $LifeTimePerformance =
+    "SELECT date, position, chart_name
+    FROM CHARTED NATURAL JOIN CHARTS
+    WHERE album_id=? order by date";
+    $results = $this->db->query($LifeTimePerformance, array($album_id));
+    $results = $results->result_array();
+
+    $line_chart_data = array();
+
+    foreach ($dates as $date)
+    {
+      $line_chart_data[$date['date']] = array();
+      foreach ($charts as $chart)
+      {
+        $line_chart_data[$date['date']][$chart['chart_name']] =  "";
+      }
+    }
+
+    foreach ($dates as $date)
+    {
+      foreach ($charts as $chart)
+      {
+        foreach ($results as $result)
+        {
+          if($result['date'] == $date['date'] && $result['chart_name'] == $chart['chart_name'])
+          {
+              $line_chart_data[$date['date']][$chart['chart_name']] = -1 * $result['position'];
+          }
+        }
+      }
+    }
+
+    return array('charts' =>  $charts, 'data' => $line_chart_data);
+  }
+
+  function SongLifeTimePerformance($song_id)
+  {
+    $ChartNames =
+    'SELECT DISTINCT(chart_name) FROM CHARTED NATURAL JOIN CHARTS
+    WHERE song_id=?';
+    $charts = $this->db->query($ChartNames, array($song_id))->result_array();
+
+    $AllDates =
+    'SELECT DISTINCT(date) FROM CHARTED NATURAL JOIN CHARTS
+    WHERE song_id=?';
+    $dates = $this->db->query($AllDates, array($song_id))->result_array();
+
+    $LifeTimePerformance =
+    "SELECT date, position, chart_name
+    FROM CHARTED NATURAL JOIN CHARTS
+    WHERE song_id=? order by date";
+    $results = $this->db->query($LifeTimePerformance, array($song_id));
+    $results = $results->result_array();
+
+    $line_chart_data = array();
+
+    foreach ($dates as $date)
+    {
+      $line_chart_data[$date['date']] = array();
+      foreach ($charts as $chart)
+      {
+        $line_chart_data[$date['date']][$chart['chart_name']] =  "";
+      }
+    }
+
+    foreach ($dates as $date)
+    {
+      foreach ($charts as $chart)
+      {
+        foreach ($results as $result)
+        {
+          if($result['date'] == $date['date'] && $result['chart_name'] == $chart['chart_name'])
+          {
+              $line_chart_data[$date['date']][$chart['chart_name']] = -1 * $result['position'];
+          }
+        }
+      }
+    }
+
+    return array('charts' =>  $charts, 'data' => $line_chart_data);
+  }
 }

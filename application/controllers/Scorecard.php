@@ -119,7 +119,20 @@ function Song($parameter1 = null, $parameter2 = null)
     show_404();
   }
 
-  $this->load->template("Scorecard_SongsAndAlbums", $data);
+  $artist_name = $data['artist_name'];
+  $song_name = $data['name'];
+  $this->load->model("Scorecard_model");
+  $artist_id = $this->Scorecard_model->GetArtistID($artist_name);
+  $song_id = $this->Scorecard_model->GetSongID($song_name, $artist_id);
+
+  $lineData = $this->Scorecard_model->SongLifeTimePerformance($song_id);
+
+  $this->load->template("Scorecard_SongsAndAlbums",
+   array(
+     "name"=>$song_name,
+     "artist_name"=>$artist_name,
+     "lineData" => $lineData
+   ));
 
 }
 
@@ -129,8 +142,20 @@ function Album($parameter1 = null, $parameter2 = null)
   {
     show_404();
   }
+  $artist_name = $data['artist_name'];
+  $album_name = $data['name'];
+  $this->load->model("Scorecard_model");
+  $artist_id = $this->Scorecard_model->GetArtistID($artist_name);
+  $album_id = $this->Scorecard_model->GetAlbumID($album_name, $artist_id);
 
-  $this->load->template("Scorecard_SongsAndAlbums", $data);
+  $lineData = $this->Scorecard_model->AlbumLifeTimePerformance($album_id);
+
+  $this->load->template("Scorecard_SongsAndAlbums",
+   array(
+     "name"=>$album_name,
+     "artist_name"=>$artist_name,
+     "lineData" => $lineData
+   ));
 }
 
 
