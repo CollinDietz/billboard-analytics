@@ -88,6 +88,7 @@
               titleTextStyle: {
                 color: '#FFFFFF'
               },
+              explorer: { keepInBounds: true }
             };
 
             var chart = new google.charts.Line(document.getElementById('linechart_material'));

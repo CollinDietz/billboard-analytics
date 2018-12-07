@@ -115,10 +115,19 @@ class ScoreCard_model extends CI_Model {
     WHERE album_id=?';
     $charts = $this->db->query($ChartNames, array($album_id))->result_array();
 
-    $AllDates =
-    'SELECT DISTINCT(date) FROM CHARTED NATURAL JOIN CHARTS
+    $MinMaxDates =
+    'SELECT MIN(date), MAX(date) FROM CHARTED NATURAL JOIN CHARTS
     WHERE album_id=?';
-    $dates = $this->db->query($AllDates, array($album_id))->result_array();
+    $MinMaxDates = $this->db->query($MinMaxDates, array($album_id))->result_array();
+
+    // $AllDates =
+    // 'SELECT DISTINCT(date) FROM CHARTED NATURAL JOIN CHARTS where song_id=?';
+    // $dates = $this->db->query($AllDates, array($song_id))->result_array();
+
+    $DateRange =
+    'SELECT DISTINCT(date) FROM CHARTED WHERE date >= ? and date <= ?';
+    $dates = $this->db->query($DateRange, array($MinMaxDates[0]['MIN(date)'], $MinMaxDates[0]['MAX(date)']))->result_array();
+
 
     $LifeTimePerformance =
     "SELECT date, position, chart_name
@@ -162,10 +171,18 @@ class ScoreCard_model extends CI_Model {
     WHERE song_id=?';
     $charts = $this->db->query($ChartNames, array($song_id))->result_array();
 
-    $AllDates =
-    'SELECT DISTINCT(date) FROM CHARTED NATURAL JOIN CHARTS
+    $MinMaxDates =
+    'SELECT MIN(date), MAX(date) FROM CHARTED NATURAL JOIN CHARTS
     WHERE song_id=?';
-    $dates = $this->db->query($AllDates, array($song_id))->result_array();
+    $MinMaxDates = $this->db->query($MinMaxDates, array($song_id))->result_array();
+
+    // $AllDates =
+    // 'SELECT DISTINCT(date) FROM CHARTED NATURAL JOIN CHARTS where song_id=?';
+    // $dates = $this->db->query($AllDates, array($song_id))->result_array();
+
+    $DateRange =
+    'SELECT DISTINCT(date) FROM CHARTED WHERE date >= ? and date <= ?';
+    $dates = $this->db->query($DateRange, array($MinMaxDates[0]['MIN(date)'], $MinMaxDates[0]['MAX(date)']))->result_array();
 
     $LifeTimePerformance =
     "SELECT date, position, chart_name
