@@ -15,6 +15,11 @@ else if($_SESSION['pageHistory'][0] != current_url_full())
 <html lang="en">
 
 <head>
+  <?php if(isset($page_title)): ?>
+    <title><?php echo $page_title?> - Chart The Boards</title>
+  <?php else: ?>
+    <title>Chart The Boards</title>
+  <?php endif;?>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

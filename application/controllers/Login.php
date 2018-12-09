@@ -17,7 +17,11 @@ class Login extends CI_Controller {
   {
     if(count($_POST) == 0)
     {
-      $this->load->template("Login_view", array("message" => "", "button_text" => "Login"));
+      $this->load->template("Login_view",
+                    array("message" => "",
+                          "button_text" => "Login",
+                          "page_title" => "Login"
+                        ));
     }
     else
     {
@@ -31,7 +35,11 @@ class Login extends CI_Controller {
       }
       else
       {
-        $this->load->template("Login_view", array("message" => "Failed", "button_text" => "Login"));
+        $this->load->template("Login_view",
+        array("message" => "Failed",
+              "button_text" => "Login",
+              "page_title" => "Login"
+            ));
       }
     }
   }
@@ -40,7 +48,11 @@ class Login extends CI_Controller {
   {
     if(count($_POST) == 0)
     {
-      $this->load->template("Register_view", array("message" => "", "button_text" => "Register"));
+      $this->load->template("Register_view",
+        array("message" => "",
+              "button_text" => "Register",
+              "page_title" => "Register"
+            ));
     }
     else
     {
@@ -53,7 +65,11 @@ class Login extends CI_Controller {
       }
       else
       {
-        $this->load->template("Register_view", array("message" => "Failed", "button_text" => "Register"));
+        $this->load->template("Register_view",
+        array("message" => "Failed",
+              "button_text" => "Register",
+              "page_title" => "Register"
+              ));
       }
     }
   }

@@ -74,7 +74,8 @@ function index()
        'num_artist' => $num_artists,
        'num_album' => $num_albums,
        'num_song' => $num_songs,
-       'num_chart' => $num_charts
+       'num_chart' => $num_charts,
+       'page_title' => "Search for \"".$query."\""
      ));
   }
 }

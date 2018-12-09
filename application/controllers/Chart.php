@@ -44,6 +44,7 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
 
   $view_vars = array(
     "chart"=>$chart,
+    "page_title" => ucwords(str_replace("-", " ", $chart_name)),
     "entry_type"=>$entry_identifier,
     "IsAlbums"=>$IsAlbums,
     "chart_name"=>$chart_name,

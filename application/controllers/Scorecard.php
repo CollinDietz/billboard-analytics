@@ -108,7 +108,8 @@ function Artist($parameter1 = null)
      'ChartApperancesStats' => $ChartApperances,
      'AlbumApperancesStats' => $AlbumApperancesStats,
      'SongApperancesStats' => $SongApperancesStats,
-     'IsFavorite' => $IsFavorite
+     'IsFavorite' => $IsFavorite,
+     'page_title' => $artist_name
    ));
 }
 
@@ -152,7 +153,8 @@ function Song($parameter1 = null, $parameter2 = null)
      "name"=>$song_name,
      "artist_name"=>$artist_name,
      "lineData" => $lineData,
-     'IsFavorite' => $IsFavorite
+     'IsFavorite' => $IsFavorite,
+     'page_title' => $song_name." by ".$artist_name
    ));
 
 }
@@ -196,7 +198,8 @@ function Album($parameter1 = null, $parameter2 = null)
      "name"=>$album_name,
      "artist_name"=>$artist_name,
      "lineData" => $lineData,
-     'IsFavorite' => $IsFavorite
+     'IsFavorite' => $IsFavorite,
+     'page_title' => $album_name." by ".$artist_name 
    ));
 }
 

@@ -23,7 +23,7 @@ class User extends CI_Controller {
     {
       $this->load->model("UserData_model");
       $fav_artists = $this->UserData_model->GetFavorites($_SESSION["user"]);
-      $this->load->template("user_favorites", array("fav_artists" => $fav_artists));
+      $this->load->template("user_favorites", array("fav_artists" => $fav_artists, "page_title" => "Favorites"));
     }
   }
 
