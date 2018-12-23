@@ -37,6 +37,13 @@ class Chart_model extends CI_Model {
    return $result;
   }
 
+  function get_max_date($chart_id)
+  {
+    $max_date = 'SELECT MAX(DATE) FROM CHARTED WHERE chart_id = ?';
+    $result = $this->db->query($max_date, array($chart_id))->result_array()[0]["MAX(DATE)"];
+    return $result;
+  }
+
 }
 
 ?>

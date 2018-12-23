@@ -57,7 +57,10 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
 
 public function index()
 {
-  $this->view("billboard-200", date('Y-m-d',strtotime("next Saturday")));
+  $this->load->model("Chart_model");
+  $chart_id = $this->Chart_model->get_chart_id_and_type("billboard-200")[0]["chart_id"];
+  $date = $this->Chart_model->get_max_date($chart_id);
+  $this->view("billboard-200", $date);
 }
 
 public function chart_pick()
