@@ -42,6 +42,8 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
     $entry_identifier = "Album Name";
   }
 
+  $dates = $this->Chart_model->get_surrounding_dates($date, $chart_id);
+
   $view_vars = array(
     "chart"=>$chart,
     "page_title" => ucwords(str_replace("-", " ", $chart_name)),
@@ -50,7 +52,10 @@ public function view($parameter1 = NULL, $parameter2 = NULL)
     "chart_name"=>$chart_name,
     "chart_name_norm"=>ucwords(str_replace("-", " ", $chart_name)),
     "date"=>$date,
-    "charts_list"=>$this->Chart_model->get_all_chart_names());
+    "charts_list"=>$this->Chart_model->get_all_chart_names(),
+    "prev_week" => $dates["prev_week"],
+    "next_week" => $dates["next_week"]
+  );
 
   $this->load->template("Chart_view",$view_vars);
 }

@@ -44,6 +44,25 @@ class Chart_model extends CI_Model {
     return $result;
   }
 
+  function get_surrounding_dates($date, $chart_id)
+  {
+    $date_above = 'SELECT MIN(date) FROM CHARTED WHERE date > ? AND chart_id = ?';
+    $result = $this->db->query($date_above, array($date, $chart_id))->result_array();
+    if(count($result) != 0)
+    {
+      $next_week = $result[0]['MIN(date)'];
+    }
+
+    $date_below = 'SELECT MAX(date) FROM CHARTED WHERE date < ? AND chart_id = ?';
+    $result = $this->db->query($date_below, array($date, $chart_id))->result_array();
+    if(count($result) != 0)
+    {
+      $prev_week = $result[0]['MAX(date)'];
+    }
+
+    return array("next_week" => $next_week, "prev_week" => $prev_week);
+  }
+
 }
 
 ?>

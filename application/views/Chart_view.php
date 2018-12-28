@@ -43,6 +43,22 @@
     </form>
 
 
+  <div class="container">
+    <div class="row justify-content-center">
+      <?php if(isset($prev_week)): ?>
+        <div class="col-5 text-center">
+          <a href="<?php echo site_url("chart/view/$chart_name/$prev_week")?>">Prev Week</a>
+        </div>
+      <?php endif; ?>
+      <span></span>
+      <?php if(isset($next_week)): ?>
+        <div class="col-5 text-center">
+          <a href="<?php echo site_url("chart/view/$chart_name/$next_week")?>">Next Week</a>
+        </div>
+      <?php endif; ?>
+    </div>
+  </div>
+
   <?php if (count($chart) > 0): ?>
   <table class="table table-dark skinny centered">
     <thead>
